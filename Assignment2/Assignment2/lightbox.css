@@ -1,0 +1,355 @@
+/*  JavaScript 7th Edition
+    Chapter 5
+    Chapter Case
+
+    Filename: lightbox.css
+*/
+
+/* --------------------------------------------------------------*/
+/* Styles for the favorites box containing the images and tools  */
+/* --------------------------------------------------------------*/
+/*Body styles*/
+body{
+   background-color:rgb(194, 178, 141);
+   background-image:url(background.png);
+   background-size:cover;
+   font-family: 'Dosis', sans-serif;
+   color:#f1f1f1;
+}
+/*Styles for banner*/
+header{
+   background-color: #1b3c27;
+   display:flex;
+   justify-content: center;
+   width:960px;
+   margin:auto;
+   padding:2rem 0;
+}
+span{
+   background-color: #1b3c27;
+   font-size:400%;
+   width:fit-content;
+   min-width: 33px;
+   text-align: center;
+}
+span:hover{
+   animation-duration: 2.3s;
+   animation-name:bouncing;
+   transition:ease;
+}
+/*Styles for the box containing the favorite images*/
+div#faveBar{
+   position: relative;
+   width: 960px;
+   height: 170px;
+   margin: 0px 20px 120px;
+   background-color:#0ba7a3;
+}
+/*Styles for favorites bar title*/
+div#faveBar h1{width: 100%;
+   text-align: center;
+   font-size: 2.4em;
+   }
+
+/*Styles for favorite image container*/
+div#faveImageContainer{
+   display: flex;
+   flex-direction:row;
+   flex-wrap:nowrap;
+   justify-content: space-around;
+   width:960px;
+   height:100%;
+   
+}
+
+/*styles for figures*/
+div#faveImageContainer figure{
+   height:100%;
+   max-width:180px;
+  
+}
+figcaption{
+   text-align:center;
+   padding:20px 0;
+   background-color:rgba(1, 78, 14, 0.897);  
+}
+/*Styles for images within faveBar*/
+.favoritePictures {
+   display: block;
+   width: fit-content;
+   height: 80%;
+   margin-right: 13px;
+   cursor: pointer;
+   outline: 2px solid #1b3c27;
+   box-shadow: 3px 3px 10px black;  
+   user-select: none; 
+   object-fit: cover;  
+   object-position:center;
+}
+
+p#removeButton{
+   position:relative;
+   top:75px;
+   cursor: pointer;
+   background-color: rgba(7, 126, 29, 0.862);
+   width:182px;
+   text-align:center;
+   padding:5px;
+  
+}
+
+article{
+   margin:50px 30px 10px;
+}
+article>h1{
+   background-color:rgba(7, 126, 29, 0.862);
+   padding:20px 0;
+   border-radius: 10px;
+   font-family: 'Dosis', sans-serif;
+   font-size: xx-large;
+   
+}
+article>ul{
+   background-color:#42cbbd;
+   padding:30px;
+   box-shadow: 3px 3px 10px black; 
+   zoom:70%;
+   list-style-type:none;
+}
+article>*,article>h1{
+   max-width:50%;
+   margin:auto;
+   text-align: center;
+}
+/* --------------------------------------------------------------*/
+/* Styles for the slideshow box containing the images and tools  */
+/* --------------------------------------------------------------*/
+
+/* Styles for the box containing the slideshow and tools */
+div#lightbox {
+   position: relative;
+   width: 960px;
+   height: 170px;
+   margin: 65px auto;
+   background-color:rgba(7, 126, 29, 0.862);
+}
+
+/* Styles for slideshow title */
+div#lightbox h1#galleryTitle {
+   width: 100%;
+   text-align: center;
+   font-size: 2.4em;
+   margin: 0 0 20px 0;
+}
+
+/* Styles for the left and right arrows to move through the slideshow */
+div#lightbox div#leftBox, div#lightbox div#rightBox {
+   position: absolute;
+   width: 5%;
+   height: 30px;
+   color: #F3EF8F;
+   text-shadow: 2px 2px 2px black;
+   font-size: 20px;
+   font-weight: bold;
+   top: 118px;
+   line-height: 30px;
+   text-align: center;
+   z-index: 1;
+   background: rgba(0,0, 0, 0.0);
+   cursor: pointer;
+   user-select: none;
+}
+
+/* Hovering styles for the left and right arrows */
+div#lightbox div#leftBox:hover, div#lightbox div#rightBox:hover {
+   background: rgba(0,0,0,0.5);
+}
+
+/* Horizontal position of the left arrow */
+div#lightbox div#leftBox {
+   left: 0px;
+}
+
+/* Horizontal position of the right arrow */
+div#lightbox div#rightBox {
+   right: 0px;
+}
+
+/* Styles for the box containing slide images */
+div#lightbox div#slideBox {
+   display: flex;
+   flex-direction: row;     /* Place images within a flexbox on a single row */
+   flex-wrap: nowrap;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;        /* Hide images which overflow the box border */
+   background-color: rgba(7, 126, 29, 0.862);
+   padding:10px;
+}
+
+/* Styles for the box containing the slide counter */
+div#lightbox div#slideCounter {
+   position: absolute;
+   z-index: 1;
+   width: 70px;
+   height: 26px;
+   line-height: 20px;
+   font-size: 20px;
+   background-color: rgba(0,0,0,0.5);
+   border-radius: 4px;
+   text-align: center;
+   color: white;
+   top: 60px;
+   left: 0px;
+   font-family: 'Dosis', sans-serif;
+   padding: 3px;
+   user-select: none;
+}
+
+/* Styles for the play-pause button */
+div#lightbox div#playPause {
+   position: absolute;
+   top: 250px;
+   left: 47.5%;
+   text-align: center;
+   font-size: 2.2em;
+   width: 40px;
+   margin: 0 auto;
+   text-shadow: 3px 3px 20px black;
+   cursor: pointer;
+   user-select: none;
+   filter: grayscale(1);
+}
+
+/* Hovering styles for the play-pause button */
+div#lightbox div#playPause:hover {
+   position: absolute;
+   top: 250px;
+   left: 47.5%;
+   text-align: center;
+   font-size: 2.2em;
+   width: 40px;
+   margin: 0 auto;
+   text-shadow: 3px 3px 20px black;
+   cursor: pointer;
+   user-select: none;
+   filter: grayscale(0.6) hue-rotate(120deg);
+}
+
+/* Styles for images within the slideshow box */
+div#slideBox img {
+   display: block;
+   width: 230px;
+   height: auto;
+   margin-right: 13px;
+   filter: opacity(0.8);
+   cursor: pointer;
+   outline: 2px solid #1b3c27;
+   box-shadow: 3px 3px 10px black;  
+   user-select: none;   
+}
+
+/* Hovering styles for images within the slideshow box */
+div#slideBox img:hover {
+   filter: opacity(1);
+}
+
+
+
+/* ---------------------------------------------------------*/
+/* Styles for the overlay displaying an image in fullscreen */
+/* ---------------------------------------------------------*/
+
+/* Styles for the overlay */
+div#lbOverlay {
+   position: fixed;                        /* Overlay is fixed on screen */
+   z-index: 1;                             /* Overlay sits on top of other content */
+   width: 100%;                            /* Full width */
+   height: 100%;                           /* Full height */
+   top: 0;
+   left: 0;
+   background-color: rgba(0, 104, 17, 0.85);  
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   overflow:scroll;
+}
+
+/* Styles for the figure box within the overlay */
+div#lbOverlay figure {
+   display: block;
+   width: 80%;
+   max-width: 800px;
+   
+}
+/*Styles for the add to favorites button*/
+div#lbOverlayFavesButton {
+   position:relative;
+   top:10%;
+   border-radius:10px;
+   background-color:rgba(7, 126, 29, 0.862);
+   padding:20px;
+   cursor:pointer;
+   
+}
+div#lbOverlayFavesButton:hover{
+   zoom:120%;   
+}
+/* Styles for the image within the overlay */
+div#lbOverlay figure img {
+   display: block;
+   margin: auto;
+   width: 100%;
+   height: auto;
+   box-shadow: 5px 5px 20px black;
+   animation-name: zoom;      /* animate the opening of the figure */
+   animation-duration: 1s;    /* over a 1-second interval */
+}
+
+/* Styles for the caption within the overlay */
+div#lbOverlay figure figcaption {
+   text-align: center;
+   font-size: 1.25em;
+   color: white;
+   margin-top: 10px;
+   animation-name: zoom;      /* animate the opening of the figure */
+   animation-duration: 1s;    /* over a 1-second interval */  
+}
+
+/* Styles for the overlay close button */
+div#lbOverlay div#lbOverlayClose {
+   position: absolute;
+   top: 20px;
+   right: 40px;
+   color: #f1f1f1;
+   font-size: 40px;
+   cursor: pointer;
+   user-select: none;
+}
+
+/* Hovering styles for the modal window close button */
+div#lbOverlay div#lbOverlayClose:hover {
+   color: #F7F1A9;
+   text-shadow: 3px 3px 0px black;
+}
+footer{
+   margin:200px 0px 30px;
+}
+
+/* Keyframe animation for the opening of the modal window figure and caption */
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/*Keyfram animation for header letters*/
+@keyframes bouncing {
+   0%   { transform: scale(1,1) translateY(0); }
+   10%  { transform: scale(1.2,0.8) translateY(-40px); }
+   20%  { transform: scale(1,1) translateY(0); }
+   50%  {transform: translateY(0);}
+   58%   {transform: translateY(-5);}
+   100% { transform: translateY(0); }
+   
+}

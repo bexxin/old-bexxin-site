@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;900&family=Open+Sans&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <form onsubmit="drawTableWithUserInput();return false">
+        <h3>Create Your Own Table</h3>
+        <label for="maxRows">Select number of rows:</label>
+        <input type="number" id="maxRows" name="maxRows" value="1" min="0">
+        <label for="maxCols">Select number of columns:</label>
+        <input type="number" id="maxCols" name="maxCols" value="1" min="0">
+        <input type="submit" id="submitButton" value="CREATE">
+    </form>
+    
+    <div id="myTableContainer"></div>
+    
+    
+<footer><small> <p>&copyCopyright Becky Rutherford, 301285427, COMP125 Winter 2023</p></small></footer>    
+<script src="assignment1.js"></script>
+</body>
+
+</html>
